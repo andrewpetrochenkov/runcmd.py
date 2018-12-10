@@ -9,7 +9,7 @@ import public
 @public.add
 class Process:
     """Process class"""
-    __readme__ = ["exc", "args", "code", "out", "err", "pid", "ok", "running", "__bool__"]
+    __readme__ = ["exc", "args", "code", "out", "err", "pid", "kill", "ok", "running", "__bool__"]
 
     def __init__(self, process, background):
         code, out, err = None, "", ""
@@ -41,6 +41,15 @@ class Process:
     def pid(self):
         """return rocess pid"""
         return self._pid
+
+    def kill(self, signal=None):
+        """kill process. return error string if error occured"""
+        if self.running:
+            args = list(filter(None, ["kill", signal, self.pid]))
+            process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            out, err = process.communicate()
+            if "No such process" not in err.decode():
+                return err.decode().rstrip()
 
     @property
     def args(self):

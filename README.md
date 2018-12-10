@@ -1,5 +1,5 @@
-[![](https://img.shields.io/pypi/pyversions/runcmd.svg?longCache=True)](https://pypi.org/pypi/runcmd/)
-[![](https://img.shields.io/pypi/v/runcmd.svg?maxAge=3600)](https://pypi.org/pypi/runcmd/)
+[![](https://img.shields.io/pypi/pyversions/runcmd.svg?longCache=True)](https://pypi.org/project/runcmd/)
+[![](https://img.shields.io/pypi/v/runcmd.svg?maxAge=3600)](https://pypi.org/project/runcmd/)
 [![Travis](https://api.travis-ci.org/looking-for-a-job/runcmd.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/runcmd.py/)
 
 #### Install
@@ -8,17 +8,15 @@ $ [sudo] pip install runcmd
 ```
 
 #### Classes
+`runcmd.Process` - Process class
 
-###### `runcmd.Process`
-
-Process class
-
-method|description
+method|`__doc__`
 -|-
-`exc()`|raise OSError if status code is not 0. returns self
 `__bool__()`|return True if status code is 0
+`exc()`|raise OSError if status code is not 0. returns self
+`kill(signal=None)`|kill process. return error string if error occured
 
-@property|description
+@property|`__doc__`
 -|-
 `args`|return arguments list
 `code`|return status code
@@ -29,7 +27,7 @@ method|description
 `running`|return True if process is running, else False
 
 #### Functions
-function|description
+function|`__doc__`
 -|-
 `runcmd.run(args, cwd=None, background=False)`|run command and return Process object
 
@@ -47,11 +45,15 @@ function|description
 1234
 ```
 
-background - add `background=True`
+`background=True`
 ```python
 >>> r = runcmd.run(["sleep","5"],background=True)
 >>> while r.running:  # True if process is running and not "zombie process"
 >>>     print("running")
+```
+`kill(signal=None)` - kill process
+```python
+>>> r.kill(-9)
 ```
 
 `exc()` - raise exception if code is not `0`
