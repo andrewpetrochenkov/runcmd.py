@@ -9,3 +9,5 @@ while r.running:
     print("running %s" % counter)
     counter += 1
     time.sleep(1)
+    if counter > 2:
+        r.kill()

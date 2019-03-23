@@ -1,35 +1,25 @@
+<!--
+https://pypi.org/project/readme-generator/
+-->
+
 [![](https://img.shields.io/pypi/pyversions/runcmd.svg?longCache=True)](https://pypi.org/project/runcmd/)
 [![](https://img.shields.io/pypi/v/runcmd.svg?maxAge=3600)](https://pypi.org/project/runcmd/)
 [![Travis](https://api.travis-ci.org/looking-for-a-job/runcmd.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/runcmd.py/)
 
-#### Install
+#### Installation
 ```bash
 $ [sudo] pip install runcmd
 ```
 
 #### Classes
-`runcmd.Process` - Process class
-
-method|`__doc__`
+class|`__doc__`
 -|-
-`__bool__()`|return True if status code is 0
-`exc()`|raise OSError if status code is not 0. returns self
-`kill(signal=None)`|kill process. return error string if error occured
-
-@property|`__doc__`
--|-
-`args`|return arguments list
-`code`|return status code
-`err`|return stderr string
-`ok`|return True if status code is 0, else False
-`out`|return stdout string
-`pid`|return rocess pid
-`running`|return True if process is running, else False
+`runcmd.Process` |Process class
 
 #### Functions
 function|`__doc__`
 -|-
-`runcmd.run(args, cwd=None, background=False)`|run command and return Process object
+`runcmd.run(args, cwd=None, background=False)` |run command and return Process object
 
 #### Examples
 ```python
@@ -65,4 +55,6 @@ OSError: exited with code 1
 mkdir: /: Is a directory
 ```
 
-<p align="center"><a href="https://pypi.org/project/readme-md/">readme-md</a> - README.md generator</p>
+<p align="center">
+    <a href="https://pypi.org/project/readme-generator/">readme-generator</a>
+</p>

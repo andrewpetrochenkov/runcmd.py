@@ -45,7 +45,7 @@ class Process:
     def kill(self, signal=None):
         """kill process. return error string if error occured"""
         if self.running:
-            args = list(filter(None, ["kill", signal, self.pid]))
+            args = list(map(str, filter(None, ["kill", signal, self.pid])))
             process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             out, err = process.communicate()
             if "No such process" not in err.decode():
@@ -84,8 +84,13 @@ class Process:
     @property
     def running(self):
         """return True if process is running, else False"""
-        zombie = psutil.Process(self.pid).status() == psutil.STATUS_ZOMBIE
-        return not zombie and os.system("kill -0 %s &> /dev/null" % self.pid) == 0
+        try:
+            os.kill(self.pid, 0)
+            return psutil.Process(self.pid).status() != psutil.STATUS_ZOMBIE
+        except OSError:
+            return False
+        except psutil._exceptions.NoSuchProcess:
+            return False
 
     def __bool__(self):
         """return True if status code is 0"""
