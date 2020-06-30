@@ -1,15 +1,15 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+__all__ = ['Process', 'run']
+
+
 import os
 import subprocess
 import psutil
-import public
 
 
-@public.add
 class Process:
     """Process class"""
-    __readme__ = ["exc", "args", "code", "out", "err", "pid", "kill", "ok", "running", "__bool__"]
+    __readme__ = ["exc", "args", "code", "out", "err",
+                  "pid", "kill", "ok", "running", "__bool__"]
 
     def __init__(self, process, background):
         code, out, err = None, "", ""
@@ -29,7 +29,8 @@ class Process:
             if not self.err:
                 output = self.out
             if output:
-                raise OSError("%s exited with code %s\n%s" % (self.args, self.code, output))
+                raise OSError("%s exited with code %s\n%s" %
+                              (self.args, self.code, output))
             raise OSError("%s exited with code %s" % (self.args, self.code))
         return self
 
@@ -46,7 +47,8 @@ class Process:
         """kill process. return error string if error occured"""
         if self.running:
             args = list(map(str, filter(None, ["kill", signal, self.pid])))
-            process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             out, err = process.communicate()
             if "No such process" not in err.decode():
                 return err.decode().rstrip()
@@ -143,7 +145,6 @@ class Command:
         return Process(process, background)
 
 
-@public.add
 def run(args, cwd=None, background=False):
     """run command and return Process object"""
     return Command().run(args, cwd=cwd, background=background)

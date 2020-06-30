@@ -1,26 +1,16 @@
 <!--
-https://pypi.org/project/readme-generator/
-https://pypi.org/project/python-readme-generator/
+https://readme42.com
 -->
 
-[![](https://img.shields.io/pypi/pyversions/runcmd.svg?longCache=True)](https://pypi.org/project/runcmd/)
-[![](https://img.shields.io/pypi/v/runcmd.svg?maxAge=3600)](https://pypi.org/project/runcmd/)
-[![Travis](https://api.travis-ci.org/looking-for-a-job/runcmd.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/runcmd.py/)
 
-#### Installation
+[![](https://img.shields.io/pypi/v/runcmd.svg?maxAge=3600)](https://pypi.org/project/runcmd/)
+[![](https://img.shields.io/badge/License-Unlicense-blue.svg?longCache=True)](https://unlicense.org/)
+[![](https://github.com/andrewp-as-is/runcmd.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/runcmd.py/actions)
+
+### Installation
 ```bash
 $ [sudo] pip install runcmd
 ```
-
-#### Classes
-class|`__doc__`
--|-
-`runcmd.Process` |Process class
-
-#### Functions
-function|`__doc__`
--|-
-`runcmd.run(args, cwd=None, background=False)` |run command and return Process object
 
 #### Examples
 ```python
@@ -57,5 +47,5 @@ mkdir: /: Is a directory
 ```
 
 <p align="center">
-    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
+    <a href="https://readme42.com/">readme42.com</a>
 </p>
